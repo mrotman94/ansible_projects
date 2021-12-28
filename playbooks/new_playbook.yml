@@ -3,6 +3,19 @@
   become: yes
   tasks: 
   - name: i want to install git
+    apt:
+      name: git
+      state: present 
+  - name: i want to install tree
+    apt:
+      name: tree
+      state: present
+  - name: i want to install wget
+    apt:
+      name: httpd
+      state: present
+    when: ansible_os_family =="debian"  
+   - name: i want to install git
     yum:
       name: git
       state: present 
@@ -14,4 +27,4 @@
     yum:
       name: httpd
       state: present
-  
+    when: ansible_os_family =="RedHat"
